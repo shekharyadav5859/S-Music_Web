@@ -138,7 +138,7 @@ export default function MainPage() {
                         >
 
                           {/* Image */}
-                        <Link to={`/One/song/Page/${song.id}/${song.songname}`}
+                        <Link to={`/One/song/Page/${song.songname}`}
                         state={{song}}
                         >
                           <div className="relative w-full aspect-square overflow-hidden">

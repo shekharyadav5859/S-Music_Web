@@ -14,10 +14,30 @@ import suraj from "../assets/photo/suraj-hua-maddham-k3g-500-500.jpg";
 import piya from "../assets/photo/images (1).jpg";
 import keseHua from "../assets/photo/kese hua.jpg";
 
+// ================= AUDIO IMPORT =================
+
+import song1 from "../assets/song/Tujhe Dekha To Dilwale Dulhania Le Jayenge 128 Kbps.mp3";
+import song2 from "../assets/song/song2.mp3";
+import song3 from "../assets/song/Ve Kamleya Rocky Aur Rani Kii Prem Kahaani 128 Kbps.mp3";
+import song4 from "../assets/song/Bulleya Sultan 128 Kbps.mp3";
+import song5 from "../assets/song/295 Moosetape 128 Kbps.mp3";
+import song6 from "../assets/song/Dil Mera Tod Diya Kasoor 128 Kbps (1).mp3";
+import song7 from "../assets/song/Ami Je Tomar 3 Bhool Bhulaiyaa 3 128 Kbps.mp3";
+import song8 from "../assets/song/Bahut Jatate Ho Pyar Duet - Aadmi Khilona Hai 128 Kbps.mp3";
+import song9 from "../assets/song/Ek Dilruba Hai Bewafaa 128 Kbps.mp3";
+import song10 from "../assets/song/Is Jahan Ki Nahi Hai King Uncle 128 Kbps.mp3";
+import song11 from "../assets/song/O Mere Dil Ke Chain Mere Jeevan Saathi 128 Kbps.mp3";
+import song12 from "../assets/song/Desi Kalakaar Yo Yo Honey Singh 128 Kbps.mp3";
+import song13 from "../assets/song/Suraj Hua Maddham K3g 128 Kbps.mp3";
+import song14 from "../assets/song/Piya Tu Ab To Aaja Caravan 128 Kbps.mp3";
+import song15 from "../assets/song/Kaise Hua Kabir Singh 128 Kbps.mp3";
+
+// ================= SONG DATA =================
+
 export const songData = [
   {
     id: 1,
-    song: "assets/song/Tujhe Dekha To Dilwale Dulhania Le Jayenge 128 Kbps.mp3",
+    song: song1,
     img: g,
     songname: "Tujhe Dekha To Ye Jana Sanam",
     singer: "Lata Mangeshkar, Kumar Sanu",
@@ -29,7 +49,7 @@ export const songData = [
 
   {
     id: 2,
-    song: "assets/song/song2.mp3",
+    song: song2,
     img: c,
     songname: "Aankhon Se Tune Kya Keh Diya 2.0",
     singer: "Kumar Sanu, Alka Yagnik",
@@ -41,10 +61,11 @@ export const songData = [
 
   {
     id: 3,
-    song: "assets/song/Ve Kamleya Rocky Aur Rani Kii Prem Kahaani 128 Kbps.mp3",
+    song: song3,
     img: veKamalya,
     songname: "Ve Kamleya",
-    singer: "Altamash Faridi, Arijit Singh, Shreya Ghoshal, Shadab Faridi",
+    singer:
+      "Altamash Faridi, Arijit Singh, Shreya Ghoshal, Shadab Faridi",
     duration: "4:07",
     like: false,
     play: false,
@@ -53,7 +74,7 @@ export const songData = [
 
   {
     id: 4,
-    song: "assets/song/Bulleya Sultan 128 Kbps.mp3",
+    song: song4,
     img: d,
     songname: "Bulleya",
     singer: "Vishal-Shekhar, Papon, Irshad Kamil",
@@ -65,7 +86,7 @@ export const songData = [
 
   {
     id: 5,
-    song: "assets/song/295 Moosetape 128 Kbps.mp3",
+    song: song5,
     img: e,
     songname: "295",
     singer: "Sidhu Moosewala",
@@ -77,7 +98,7 @@ export const songData = [
 
   {
     id: 6,
-    song: "assets/song/Dil Mera Tod Diya Kasoor 128 Kbps (1).mp3",
+    song: song6,
     img: f,
     songname: "Dil Mera Tod Diya",
     singer: "Alka Yagnik",
@@ -89,7 +110,7 @@ export const songData = [
 
   {
     id: 7,
-    song: "assets/song/Ami Je Tomar 3 Bhool Bhulaiyaa 3 128 Kbps.mp3",
+    song: song7,
     img: a,
     songname: "Ami Je Tomar 3.0",
     singer: "Shreya Ghoshal, Arijit Singh",
@@ -101,7 +122,7 @@ export const songData = [
 
   {
     id: 8,
-    song: "assets/song/Bahut Jatate Ho Pyar Duet - Aadmi Khilona Hai 128 Kbps.mp3",
+    song: song8,
     img: bahut,
     songname: "Bahut Jatate Ho Pyar",
     singer: "Alka Yagnik, Mohammed Aziz",
@@ -113,7 +134,7 @@ export const songData = [
 
   {
     id: 9,
-    song: "assets/song/Ek Dilruba Hai Bewafaa 128 Kbps.mp3",
+    song: song9,
     img: bewaf,
     songname: "Ek Dilruba Hai",
     singer: "Udit Narayan",
@@ -125,7 +146,7 @@ export const songData = [
 
   {
     id: 10,
-    song: "assets/song/Is Jahan Ki Nahi Hai King Uncle 128 Kbps.mp3",
+    song: song10,
     img: isJaha,
     songname: "Is Jahan Ki Nahi Hai Tumhari Aankhen",
     singer: "Lata Mangeshkar, Nitin Mukesh",
@@ -137,7 +158,7 @@ export const songData = [
 
   {
     id: 11,
-    song: "assets/song/O Mere Dil Ke Chain Mere Jeevan Saathi 128 Kbps.mp3",
+    song: song11,
     img: images,
     songname: "O Mere Dil Ke Chain",
     singer: "Kishore Kumar",
@@ -149,7 +170,7 @@ export const songData = [
 
   {
     id: 12,
-    song: "assets/song/Desi Kalakaar Yo Yo Honey Singh 128 Kbps.mp3",
+    song: song12,
     img: desiKalakaar,
     songname: "Desi Kalakaar",
     singer: "Yo Yo Honey Singh",
@@ -161,7 +182,7 @@ export const songData = [
 
   {
     id: 13,
-    song: "assets/song/Suraj Hua Maddham K3g 128 Kbps.mp3",
+    song: song13,
     img: suraj,
     songname: "Suraj Hua Maddham",
     singer: "Sonu Nigam, Alka Yagnik",
@@ -173,7 +194,7 @@ export const songData = [
 
   {
     id: 14,
-    song: "assets/song/Piya Tu Ab To Aaja Caravan 128 Kbps.mp3",
+    song: song14,
     img: piya,
     songname: "Piya Tu Ab To Aaja",
     singer: "R.D. Burman, Asha Bhosle",
@@ -185,7 +206,7 @@ export const songData = [
 
   {
     id: 15,
-    song: "assets/song/Kaise Hua Kabir Singh 128 Kbps.mp3",
+    song: song15,
     img: keseHua,
     songname: "Kaise Hua",
     singer: "Vishal Mishra",
