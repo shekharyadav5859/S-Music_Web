@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
@@ -6,28 +6,26 @@ import {
   Heart,
   MoreHorizontal,
   Music2,
+  Pause,
 } from "lucide-react";
+import MusicPlayer from "../BottomPlay/MusicPlayer";
+import { AudioContext } from "../Audio/AudioContext";
+
 
 export default function SongPage() {
   const location = useLocation();
   const navigate = useNavigate();
+const { curr, play, playsong, togglePlay } = useContext(AudioContext);
 
   const song = location.state?.song;
 const [currentSong, setCurrentSong] = useState(null);
 const [isPlaying, setIsPlaying] = useState(false);
 
-const playSong = (song) => {
-  if (!song) return;
+ const audioRef = useRef(null);
 
-  const audio = new Audio(song.song);
 
-  audio.play();
 
-  setCurrentSong(song);
-  setIsPlaying(true);
 
-  console.log(song.song);
-};
 
 
   if (!song) {
@@ -52,6 +50,8 @@ const playSong = (song) => {
   }
 
   return (
+    <>
+   
     <div className="min-h-screen bg-[#090909] text-white relative overflow-hidden">
 
       {/* Background Glow */}
@@ -122,10 +122,13 @@ const playSong = (song) => {
               {/* Play */}
               <button
               type="button"
-  onClick={() => {
-    console.log("CLICK");
-    playSong(song);
-  }}
+              onClick={() => {
+  if (curr?.id === song.id) {
+    togglePlay();
+  } else {
+    playsong(song);
+  }
+}}
                 className="
                   w-16 h-16
                   rounded-full
@@ -137,7 +140,12 @@ const playSong = (song) => {
                   shadow-xl
                 "
               >
-                <Play fill="black" size={27} />
+              {curr?.id === song.id && play ? (
+    <Pause fill="black" size={27} />
+  ) : (
+    <Play fill="black" size={27} />
+  )}
+                {/* <Play fill="black" size={27} /> */}
               </button>
 
               {/* Like */}
@@ -219,5 +227,9 @@ const playSong = (song) => {
 
       </div>
     </div>
+  <MusicPlayer   song={song}
+  play={play}
+  togglePlay={togglePlay} />
+    </>
   );
 }
