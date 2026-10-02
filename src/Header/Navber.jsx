@@ -6,12 +6,27 @@ import {
   Menu,
   X,
   Headphones,
+  Link,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function Navber() {
   const [mobileSearch, setMobileSearch] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const[serch ,setserch] = useState({text:"",});
 
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+  const name = user.name;
+  
+  const hedal = (e) => {
+  const value = e.target.value;
+
+  setserch(value);
+  console.log(serch)
+};
+  
+  
   return (
     <>
       {/* NAVBAR */}
@@ -31,7 +46,9 @@ export default function Navber() {
             </button>
 
             {/* Logo */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3"
+            onClick={()=>navigate('/')}
+            >
 
               <div className="relative w-11 h-11 rounded-2xl bg-gradient-to-br from-violet-600 via-purple-500 to-pink-500 flex items-center justify-center shadow-lg shadow-purple-500/20">
 
@@ -73,6 +90,9 @@ export default function Navber() {
               <input
                 type="text"
                 placeholder="Search songs, artists, albums..."
+                name="text"
+                value={serch.text}
+                onChange={hedal}
                 className="
                   w-full
                   h-11
@@ -129,7 +149,14 @@ export default function Navber() {
 
 
             {/* Profile */}
-            <button className="flex items-center gap-2 p-1.5 sm:pr-3 rounded-xl bg-[#111113] border border-white/[0.08] hover:bg-[#18181b] hover:border-white/15 transition">
+        
+          
+         
+
+            <button className="flex items-center gap-2 p-1.5 sm:pr-3 rounded-xl bg-[#111113] border border-white/[0.08] hover:bg-[#18181b] 
+            hover:border-white/15 transition"
+            onClick={()=>navigate("/User/SingUp")}
+            >
 
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-pink-500 flex items-center justify-center">
 
@@ -139,7 +166,7 @@ export default function Navber() {
 
               <div className="hidden lg:block text-left">
                 <p className="text-xs font-medium text-white">
-                  Guest User
+                   {user? name:"Guest User"}
                 </p>
 
                 <p className="text-[10px] text-gray-500">
@@ -168,6 +195,9 @@ export default function Navber() {
               <input
                 autoFocus
                 type="text"
+                name ="text"
+                value ={serch.text}
+                onChange={hedal}
                 placeholder="Search songs, artists..."
                 className="
                   w-full
@@ -205,7 +235,7 @@ export default function Navber() {
 
             <div className="space-y-2">
 
-              {["Home", "Library", "Artists", "Liked Songs", "Playlists"].map(
+              {["Home", "Library", "Artists", "Liked Songs"].map(
                 (item) => (
                   <button
                     key={item}

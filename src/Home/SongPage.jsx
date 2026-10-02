@@ -10,12 +10,20 @@ import {
 } from "lucide-react";
 import MusicPlayer from "../BottomPlay/MusicPlayer";
 import { AudioContext } from "../Audio/AudioContext";
+import { LikeFunction } from "../Like/LikeFunction";
 
 
 export default function SongPage() {
   const location = useLocation();
   const navigate = useNavigate();
 const { curr, play, playsong, togglePlay ,setCurr} = useContext(AudioContext);
+const [isLiked, setIsLiked] = useState(false);
+
+const currentUser =JSON.parse(localStorage.getItem("currentUser"));
+
+const isSongLiked = currentUser?.likedSongs?.some(
+  (item) => item?.id === curr?.id
+);
 
   const song = location.state?.song;
 
@@ -148,7 +156,34 @@ const { curr, play, playsong, togglePlay ,setCurr} = useContext(AudioContext);
               </button>
 
               {/* Like */}
-              <button
+            
+<button
+  onClick={() => {
+    LikeFunction(curr, navigate);
+    setIsLiked(!isSongLiked);
+  }}
+    className="
+                  w-12 h-12
+                  rounded-full
+                  border border-gray-700
+                  flex items-center justify-center
+                  hover:bg-white/10
+                  transition
+                "
+>
+  <Heart
+    size={22}
+    className={
+      isSongLiked || isLiked
+        ? "text-red-500 fill-red-500"
+        : "text-white"
+    }
+  />
+</button>
+
+
+              {/* <button
+             onClick={() => LikeFunction(curr, navigate)}
                 className="
                   w-12 h-12
                   rounded-full
@@ -159,7 +194,7 @@ const { curr, play, playsong, togglePlay ,setCurr} = useContext(AudioContext);
                 "
               >
                 <Heart size={22} />
-              </button>
+              </button> */}
 
               {/* More */}
               <button

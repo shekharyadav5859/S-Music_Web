@@ -9,6 +9,11 @@ import { useContext } from 'react'
 import { AudioContext } from './Audio/AudioContext'
 import MusicPlayer from './BottomPlay/MusicPlayer'
 import OneArtists from './Artists/OneArtists'
+import SingUp from './Authentication/SingUp'
+import { LogIn } from 'lucide-react'
+import Login from './Authentication/Login'
+import LikedSong from './Like/LikedSong'
+import Artists from './Artists/Artists'
 
 function App() {
    const { curr } = useContext(AudioContext);
@@ -19,10 +24,13 @@ function App() {
       <Route path="/" element={<AppPage />} />
       <Route path='/One/song/Page/:name' element={<SongPage/>}/>
       <Route path='/Atrtist/page/:name' element={<OneArtists/>}/>
-       
-        </Route>
+      <Route path ='/liked' element={<LikedSong/>}/>
+      <Route path ='/artists' element={<Artists/>}/>
+      </Route> 
+        
 
-
+     <Route path='/User/SingUp' element={<SingUp/>}/>
+     <Route path='login' element={<Login/>}/>
       
       </Routes>
         {curr && <MusicPlayer />}
