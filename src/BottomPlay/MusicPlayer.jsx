@@ -6,12 +6,36 @@ import {
   SkipForward,
   Heart,
   Volume2,
+  Repeat,
+  ListOrdered,
 } from "lucide-react";
 
 import { AudioContext } from "../Audio/AudioContext";
 
 const MusicPlayer = () => {
-  const { curr, play, togglePlay } = useContext(AudioContext);
+  const { curr, play, togglePlay,length,seekSong, backword , forword ,isLoop ,loop,alternetive, changeVolume, volume} = useContext(AudioContext);
+
+  const fromTime =(time)=>{
+    if(!time || isNaN(time))return 0.00;
+    const minit = Math.floor(time/60);
+    const second = Math.floor(time%60);
+
+    return `${minit}:${second.toString().padStart(2, "0")}`;
+
+  }
+   const progress = length.duration
+    ? (length.currTime / length.duration) * 100
+    : 0;
+
+const handleProgressClick = (e) => {
+  const rect = e.currentTarget.getBoundingClientRect();
+
+  const clickPosition = e.clientX - rect.left;
+
+  const percent = (clickPosition / rect.width) * 100;
+
+  seekSong(percent);
+};
 
   if (!curr) return null;
 
@@ -52,7 +76,15 @@ const MusicPlayer = () => {
 
           <div className="flex items-center gap-3 sm:gap-5 md:gap-6">
 
-            <button className="text-gray-300 hover:text-white">
+            <button className="text-gray-300 hover:text-white  hidden md:block"
+            onClick={loop}
+            >
+              <Repeat size={18} fill="currentColor" className={isLoop ? "text-purple-500" : "text-white"}/>
+            </button>
+
+            <button className="text-gray-300 hover:text-white"
+            onClick={backword}
+            >
               <SkipBack size={18} fill="currentColor" />
             </button>
 
@@ -67,40 +99,57 @@ const MusicPlayer = () => {
               )}
             </button>
 
-            <button className="text-gray-300 hover:text-white">
+            <button className="text-gray-300 hover:text-white"
+            onClick={ forword}
+            >
               <SkipForward size={18} fill="currentColor" />
             </button>
-
+            
+              <button className="text-gray-300 hover:text-white  hidden md:block"
+            onClick={alternetive}
+            >
+              <ListOrdered size={18} fill="currentColor" className={isLoop ? "text-white" : "text-purple-500" }/>
+            </button>
           </div>
 
           {/* PROGRESS */}
           <div className="flex items-center gap-1 sm:gap-2 w-full max-w-[550px]">
 
             <span className="text-[9px] sm:text-[10px] text-gray-400">
-              0:00
+            {fromTime(length.currTime)}
             </span>
 
-            <div className="h-1 flex-1 bg-gray-700 rounded-full overflow-hidden">
-              <div className="h-full w-[30%] bg-purple-500 rounded-full" />
+            <div className="h-1 flex-1 bg-gray-700 rounded-full overflow-hidden"
+             onClick={handleProgressClick}
+            >
+              <div className="h-full w-[30%] bg-purple-500 rounded-full" 
+              style={{width:`${progress}%`,}}
+              />
             </div>
 
             <span className="text-[9px] sm:text-[10px] text-gray-400">
-              {curr.duration}
+            {fromTime(length.duration)}
             </span>
 
           </div>
         </div>
 
         {/* RIGHT - VOLUME */}
-        <div className="hidden md:flex w-1/3 justify-end items-center gap-3">
+       <div className="hidden md:flex w-1/3 justify-end items-center gap-3">
 
-          <Volume2 size={19} className="text-gray-300" />
+  <Volume2 size={19} className="text-gray-300" />
 
-          <div className="w-24 h-1 bg-gray-700 rounded-full">
-            <div className="w-[70%] h-full bg-purple-500 rounded-full" />
-          </div>
+  <div
+    className="w-24 h-1 bg-gray-700 rounded-full cursor-pointer"
+    onClick={changeVolume}
+  >
+    <div
+      className="h-full bg-purple-500 rounded-full"
+      style={{ width: `${volume * 100}%` }}
+    />
+  </div>
 
-        </div>
+</div>
 
       </div>
     </div>

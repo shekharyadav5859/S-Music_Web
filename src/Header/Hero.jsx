@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Play, Sparkles, Headphones, ArrowRight } from "lucide-react";
 
 import heroImg from "../assets/photo/g.jpg";
+import { AudioContext } from "../Audio/AudioContext";
 
 export default function HeroSection() {
+  const{curr} = useContext(AudioContext);
   return (
     <section className="relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-6 pb-8">
       
@@ -16,7 +18,7 @@ export default function HeroSection() {
 
           {/* Hero Image */}
           <img
-            src={heroImg}
+            src={curr?curr.img:heroImg}
             alt="Featured music"
             className="absolute inset-0 w-full h-full object-cover opacity-45"
           />
@@ -104,7 +106,9 @@ export default function HeroSection() {
                 <span
                   key={index}
                   style={{ height: `${height}px` }}
-                  className="w-1.5 rounded-full bg-purple-400"
+                  className={`w-1.5 rounded-full bg-purple-400 ${
+  curr ? "music-bar" : ""
+}`}
                 />
               )
             )}

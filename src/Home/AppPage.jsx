@@ -1,14 +1,16 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
 
 import HeroSection from '../Header/Hero'
 import MainPage from './HomePage'
 import Artists from '../Artists/Artists'
+import { AudioContext } from '../Audio/AudioContext';
 
 
 
 
 export default function AppPage() {
+   const { curr } = useContext(AudioContext);
   return (
    <>
     

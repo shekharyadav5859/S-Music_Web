@@ -16,6 +16,33 @@ body {
   min-height: 100vh;
 }
 
+@keyframes musicBar {
+  0% {
+    transform: scaleY(0.3);
+  }
+
+  25% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(0.5);
+  }
+
+  75% {
+    transform: scaleY(0.85);
+  }
+
+  100% {
+    transform: scaleY(0.3);
+  }
+}
+
+.music-bar {
+  transform-origin: bottom;
+  animation: musicBar 0.8s ease-in-out infinite;
+}
+
 /* :root {
   --text: #6b6375;
   --text-h: #08060d;

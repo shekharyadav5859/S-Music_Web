@@ -15,13 +15,12 @@ import { AudioContext } from "../Audio/AudioContext";
 export default function SongPage() {
   const location = useLocation();
   const navigate = useNavigate();
-const { curr, play, playsong, togglePlay } = useContext(AudioContext);
+const { curr, play, playsong, togglePlay ,setCurr} = useContext(AudioContext);
 
   const song = location.state?.song;
-const [currentSong, setCurrentSong] = useState(null);
-const [isPlaying, setIsPlaying] = useState(false);
 
- const audioRef = useRef(null);
+
+
 
 
 
@@ -61,7 +60,7 @@ const [isPlaying, setIsPlaying] = useState(false);
 
         {/* Back Button */}
         <button
-          onClick={() => navigate(-1)}
+          onClick={()=> navigate(-1)}
           className="flex items-center gap-2 text-gray-300 hover:text-white transition mb-10"
         >
           <ArrowLeft size={22} />
@@ -227,9 +226,7 @@ const [isPlaying, setIsPlaying] = useState(false);
 
       </div>
     </div>
-  <MusicPlayer   song={song}
-  play={play}
-  togglePlay={togglePlay} />
+{curr && <MusicPlayer />}
     </>
   );
 }

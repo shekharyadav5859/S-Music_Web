@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Check, ChevronRight, Heart, Play } from "lucide-react";
 import { artistsData } from "../data/artists";
+import { Link } from "react-router-dom";
 
 export default function Artists() {
   const [visibleCount, setVisibleCount] = useState(4);
@@ -128,6 +129,10 @@ export default function Artists() {
 
                 return (
 
+                   <Link
+                    to={`/Atrtist/page/${artist.name}`}
+                    >
+
                   <div
                     key={artist.id}
                     className="
@@ -144,16 +149,15 @@ export default function Artists() {
                     "
                   >
 
-                    {/* =========================
-                        IMAGE
-                    ========================= */}
+                    {/*  IMAGE*/}
 
-                    <div className="
+                    
+                     <div className="
                       relative
                       aspect-[4/4.5]
                       overflow-hidden
                     ">
-
+                   
                       <img
                         src={artist.img}
                         alt={artist.name}
@@ -166,7 +170,7 @@ export default function Artists() {
                           duration-700
                         "
                       />
-
+                    
 
                       {/* DARK GRADIENT */}
 
@@ -297,6 +301,10 @@ export default function Artists() {
                       </div>
 
                     </div>
+                    
+                    
+
+                     
 
 
                     {/* =========================
@@ -350,7 +358,7 @@ export default function Artists() {
                     </div>
 
                   </div>
-
+                </Link>
                 );
               })}
 
